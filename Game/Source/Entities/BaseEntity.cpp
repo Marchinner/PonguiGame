@@ -1,10 +1,72 @@
 #include "BaseEntity.h"
 
-BaseEntity::BaseEntity(glm::vec3 position, glm::vec3 velocity, Shader shader) :
+#include <glad/glad.h>
+
+BaseEntity::BaseEntity(Type type, glm::vec3 position, glm::vec3 velocity, Shader* shader) :
+	mType{ type },
 	mPosition{ position },
 	mVelocity{ velocity },
 	mShader{ shader }
 {
+	constexpr float triangleVertices[]{
+		// positions       
+		 0.5f, -0.5f, 0.0f,
+		-0.5f, -0.5f, 0.0f,
+		 0.0f,  0.5f, 0.0f,
+	};
+
+	constexpr unsigned int triangleIndices[]{
+		0, 1, 2
+	};
+
+	constexpr float paddleVertices[]{
+		0.0f
+	};
+
+	constexpr unsigned int paddleIndices[]{
+		0
+	};
+
+	constexpr float ballVertices[]{
+		0.0f
+	};
+
+	constexpr unsigned int ballIndices[]{
+		0
+	};
+
+	glGenVertexArrays(1, &mVAO);
+	glBindVertexArray(mVAO);
+
+	glGenBuffers(1, &mEBO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mEBO);
+
+	glGenBuffers(1, &mVBO);
+	glBindBuffer(GL_ARRAY_BUFFER, mVBO);
+	switch (mType)
+	{
+	case TRIANGLE:
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(triangleIndices), triangleIndices, GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(triangleVertices), triangleVertices, GL_STATIC_DRAW);
+		break;
+	case PADDLE:
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(paddleIndices), paddleIndices, GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(paddleVertices), paddleVertices, GL_STATIC_DRAW);
+		break;
+	case BALL:
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(ballIndices), ballIndices, GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(ballVertices), ballVertices, GL_STATIC_DRAW);
+		break;
+	default:
+		break;
+	}
+
+	glVertexAttribPointer(0, sizeof(float), GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+
+	glBindVertexArray(0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 void BaseEntity::Update()
@@ -13,7 +75,13 @@ void BaseEntity::Update()
 
 void BaseEntity::Draw()
 {
-	mShader.Use();
+	mShader->Use();
+	glBindVertexArray(mVAO);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+	glBindVertexArray(0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 glm::vec3 BaseEntity::GetPosition() const

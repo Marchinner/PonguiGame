@@ -6,7 +6,7 @@
 #include <sstream>
 
 Shader::Shader(const std::string& vertexPath, const std::string& fragmentPath) :
-	mID{ glCreateProgram() }
+	mID{ }
 {
 	// Stores vertex and fragment code
 	std::string vertexCode;
@@ -34,7 +34,7 @@ Shader::Shader(const std::string& vertexPath, const std::string& fragmentPath) :
 		vertexCode = vertexShaderStream.str();
 
 		// Open fragment shader file
-		fragmentShaderFile.open(vertexPath);
+		fragmentShaderFile.open(fragmentPath);
 		// Fragment shader string stream
 		std::stringstream fragmentShaderStream;
 		// Read fragment shader file's buffer contents into stream
@@ -66,7 +66,8 @@ void Shader::compile(const std::string& vertexSource, const std::string& fragmen
 {
 	// Vertex Shader
 	const char* vertexCode = vertexSource.c_str();
-	unsigned int vertexShader{ glCreateShader(GL_VERTEX_SHADER) };
+	unsigned int vertexShader;
+	vertexShader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vertexShader, 1, &vertexCode, NULL);
 	glCompileShader(vertexShader);
 	// Check for compile errors
@@ -81,7 +82,8 @@ void Shader::compile(const std::string& vertexSource, const std::string& fragmen
 
 	// Fragment Shader
 	const char* fragmentCode = fragmentSource.c_str();
-	unsigned int fragmentShader{ glCreateShader(GL_FRAGMENT_SHADER) };
+	unsigned int fragmentShader;
+	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragmentShader, 1, &fragmentCode, NULL);
 	glCompileShader(fragmentShader);
 	// Check for compile errors
@@ -93,6 +95,7 @@ void Shader::compile(const std::string& vertexSource, const std::string& fragmen
 	}
 
 	// Link Shader Program
+	mID = glCreateProgram();
 	glAttachShader(mID, vertexShader);
 	glAttachShader(mID, fragmentShader);
 	glLinkProgram(mID);

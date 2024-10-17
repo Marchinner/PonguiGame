@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Engine/Core/GameBase.h"
+#include "Entities/Triangle/Triangle.h"
 
 class Game : public GameBase
 {
@@ -15,5 +16,8 @@ public:
 
 private:
 	void processPlayerInputs();
+
+private:
+	Triangle* mTriangle;
 };
 

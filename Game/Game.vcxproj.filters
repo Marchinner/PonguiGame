@@ -36,7 +36,7 @@
     <ClInclude Include="Source\Entities\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Entities\Triangle.h">
+    <ClInclude Include="Source\Entities\Triangle\Triangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Renderer\Shader.h">
@@ -71,11 +71,15 @@
     <ClCompile Include="Source\Entities\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Entities\Triangle.cpp">
+    <ClCompile Include="Source\Entities\Triangle\Triangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Renderer\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\Entities\Triangle\triangle.vert" />
+    <None Include="Source\Entities\Triangle\triangle.frag" />
   </ItemGroup>
 </Project>

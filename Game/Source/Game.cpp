@@ -3,12 +3,18 @@
 #include "../Engine/Input/Input.h"
 
 Game::Game() :
-	GameBase{ 800, 600, "Pongui" }
+	GameBase{ 800, 600, "Pongui" },
+	mTriangle{ nullptr }
 {
 }
 
 Game::~Game()
 {
+	if (mTriangle)
+	{
+		delete mTriangle;
+		mTriangle = nullptr;
+	}
 }
 
 void Game::Start()
@@ -16,6 +22,8 @@ void Game::Start()
 	std::cout << "Starting Pongui..." << std::endl;
 
 	GameBase::Initialize();
+
+	mTriangle = new Triangle();
 
 	std::cout << "Pongui started!" << std::endl;
 
@@ -38,7 +46,7 @@ void Game::Render()
 {
 	GameBase::Render();
 
-
+	mTriangle->Draw();
 }
 
 void Game::processPlayerInputs()
