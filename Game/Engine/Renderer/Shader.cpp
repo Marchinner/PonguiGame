@@ -62,6 +62,11 @@ void Shader::Use()
 	glUseProgram(mID);
 }
 
+void Shader::SetVec3(const std::string& uniform, glm::vec3 value)
+{
+	glUniform3f(glGetUniformLocation(mID, uniform.c_str()), value.x, value.y, value.z);
+}
+
 void Shader::compile(const std::string& vertexSource, const std::string& fragmentSource)
 {
 	// Vertex Shader

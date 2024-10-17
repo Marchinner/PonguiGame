@@ -21,11 +21,13 @@ protected:
 
 	glm::vec3 GetPosition() const;
 	glm::vec3 GetVelocity() const;
+protected:
+	Shader* mShader;
+
 private:
 	Type mType;
 	glm::vec3 mPosition;
 	glm::vec3 mVelocity;
-	Shader* mShader;
 	unsigned int mVAO;
 	unsigned int mVBO;
 	unsigned int mEBO;
