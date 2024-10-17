@@ -83,6 +83,34 @@ void BaseEntity::Draw()
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
+void BaseEntity::Move(Direction direction)
+{
+	glm::vec3 moveVector;
+	switch (direction)
+	{
+	case UP:
+		moveVector = glm::vec3(0.0f, 1.0f, 0.0f);
+		break;
+	case LEFT:
+		moveVector = glm::vec3(1.0f, 0.0f, 0.0f);
+		break;
+	case DOWN:
+		moveVector = glm::vec3(0.0f, -1.0f, 0.0f);
+		break;
+	case RIGHT:
+		moveVector = glm::vec3(-1.0f, 0.0f, 0.0f);
+		break;
+	default:
+		moveVector = glm::vec3(0.0f, 0.0f, 0.0f);
+		break;
+	}
+	glm::vec4 position{ mPosition, 1.0 };
+	glm::mat4 trans = glm::mat4(1.0f);
+	trans = glm::translate(trans, moveVector);
+	position = trans * position;
+	mPosition = position;
+}
+
 glm::vec3 BaseEntity::GetPosition() const
 {
 	return mPosition;

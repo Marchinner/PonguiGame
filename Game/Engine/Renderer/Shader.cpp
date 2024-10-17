@@ -1,6 +1,7 @@
 #include "Shader.h"
 
 #include <glad/glad.h>
+#include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -62,9 +63,14 @@ void Shader::Use()
 	glUseProgram(mID);
 }
 
-void Shader::SetVec3(const std::string& uniform, glm::vec3 value)
+void Shader::SetVec3(const std::string& uniform, const glm::vec3& value) const
 {
-	glUniform3f(glGetUniformLocation(mID, uniform.c_str()), value.x, value.y, value.z);
+	glUniform3fv(glGetUniformLocation(mID, uniform.c_str()), 1, &value[0]);
+}
+
+void Shader::SetMat4(const std::string& uniform, const glm::mat4& value) const
+{
+	glUniformMatrix4fv(glGetUniformLocation(mID, uniform.c_str()), 1, GL_FALSE, &value[0][0]);
 }
 
 void Shader::compile(const std::string& vertexSource, const std::string& fragmentSource)

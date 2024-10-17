@@ -1,6 +1,7 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 #include "../../Engine/Renderer/Shader.h"
 
 enum Type
@@ -8,6 +9,14 @@ enum Type
 	TRIANGLE,
 	PADDLE,
 	BALL
+};
+
+enum Direction
+{
+	UP,
+	LEFT,
+	DOWN,
+	RIGHT
 };
 
 class BaseEntity
@@ -18,6 +27,7 @@ protected:
 
 	virtual void Update();
 	virtual void Draw();
+	virtual void Move(Direction direction);
 
 	glm::vec3 GetPosition() const;
 	glm::vec3 GetVelocity() const;

@@ -53,4 +53,7 @@ void Game::processPlayerInputs()
 {
 	if (Input::IsKeyPressed(GLFW_KEY_ESCAPE))
 		GameBase::Stop();
+
+	if (Input::IsKeyPressed(GLFW_KEY_LEFT))
+		mTriangle->Move(LEFT);
 }
