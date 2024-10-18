@@ -18,6 +18,9 @@ public:
 	GLFWwindow* GetWindow() const;
 
 private:
+	static void framebufferSizeCallback(GLFWwindow* window, int width, int height);
+
+private:
 	int mWidth;
 	int mHeight;
 	std::string mTitle;

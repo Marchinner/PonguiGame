@@ -33,13 +33,16 @@
     <ClInclude Include="Source\Entities\BaseEntity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Entities\Player.h">
+    <ClInclude Include="Source\Entities\Player\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Entities\Triangle\Triangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Renderer\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entities\Opponent\Opponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -68,7 +71,7 @@
     <ClCompile Include="Source\Entities\BaseEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Entities\Player.cpp">
+    <ClCompile Include="Source\Entities\Player\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Entities\Triangle\Triangle.cpp">
@@ -77,9 +80,16 @@
     <ClCompile Include="Engine\Renderer\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Entities\Opponent\Opponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Source\Entities\Triangle\triangle.vert" />
-    <None Include="Source\Entities\Triangle\triangle.frag" />
+    <None Include="Source\Entities\Triangle\shaders\triangle.vert" />
+    <None Include="Source\Entities\Triangle\shaders\triangle.frag" />
+    <None Include="Source\Entities\Player\shaders\player.vert" />
+    <None Include="Source\Entities\Player\shaders\player.frag" />
+    <None Include="Source\Entities\Opponent\shaders\opponent.frag" />
+    <None Include="Source\Entities\Opponent\shaders\opponent.vert" />
   </ItemGroup>
 </Project>

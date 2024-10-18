@@ -30,6 +30,7 @@ bool Window::Initialize()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
 
 	mWindow = glfwCreateWindow(mWidth, mHeight, mTitle.c_str(), NULL, NULL);
 	if (mWindow == NULL)
@@ -39,6 +40,8 @@ bool Window::Initialize()
 	}
 
 	glfwMakeContextCurrent(mWindow);
+
+	glfwSetFramebufferSizeCallback(mWindow, framebufferSizeCallback);
 
 	return true;
 }
@@ -61,4 +64,9 @@ void Window::SwapBuffers()
 GLFWwindow* Window::GetWindow() const
 {
 	return mWindow;
+}
+
+void Window::framebufferSizeCallback(GLFWwindow* window, int width, int height)
+{
+	glViewport(0, 0, width, height);
 }

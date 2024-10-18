@@ -1,21 +1,19 @@
-#include "Triangle.h"
-
+#include "Opponent.h"
 #include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
 
-Triangle::Triangle() :
-    BaseEntity{ Type::TRIANGLE, glm::vec3{0.0f}, glm::vec3{0.0005f}, new Shader("./Source/Entities/Triangle/shaders/triangle.vert","./Source/Entities/Triangle/shaders/triangle.frag") }
+Opponent::Opponent() :
+    BaseEntity(PADDLE, glm::vec3{ 1.5f, 0.0f, 0.0f }, glm::vec3{ 0.0005f },
+        new Shader{ "./Source/Entities/Opponent/shaders/opponent.vert", "./Source/Entities/Opponent/shaders/opponent.frag" })
 {
 }
 
-void Triangle::Update()
+void Opponent::Update()
 {
 }
 
-void Triangle::Draw()
+void Opponent::Draw()
 {
-	mShader->Use();
+    mShader->Use();
 
     // create transformations
     glm::mat4 view = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
@@ -27,14 +25,15 @@ void Triangle::Draw()
     mShader->SetMat4("view", view);
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, BaseEntity::GetPosition());
+    model = glm::scale(model, glm::vec3(-0.08f, 0.5f, 0.0f));
     mShader->SetMat4("model", model);
 
-	mShader->SetVec3("color", glm::vec3(sin(-glfwGetTime()), sin(glfwGetTime()), cos(glfwGetTime())));
+    mShader->SetVec3("color", glm::vec3(sin(glfwGetTime()), sin(-glfwGetTime()), cos(-glfwGetTime())));
 
-	BaseEntity::Draw();
+    BaseEntity::Draw();
 }
 
-void Triangle::Move(Direction direction)
+void Opponent::Move(Direction direction)
 {
     BaseEntity::Move(direction);
 }

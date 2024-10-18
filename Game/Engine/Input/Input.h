@@ -1,13 +1,29 @@
 #pragma once
+#include <unordered_map>
 
 struct GLFWwindow;
 
-static GLFWwindow* gameWindow;
+enum KeyState
+{
+	JUST_PRESSED,
+	HELD_DOWN,
+	JUST_RELEASED,
+	NOT_PRESSED
+};
 
 class Input
 {
 public:
+	static void Initialize(GLFWwindow* window);
+	static void Update();
+
+	static KeyState GetKeyState(int keycode);
 	static bool IsKeyPressed(int keycode);
-	static void SetWindow(GLFWwindow* window);
+	static bool IsKeyHeld(int keycode);
+	static bool IsKeyReleased(int keycode);
+
+private:
+	static GLFWwindow* mWindow;
+	static std::unordered_map<int, KeyState> mKeyStates;
 };
 

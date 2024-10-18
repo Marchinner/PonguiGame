@@ -1,19 +1,17 @@
-#include "Triangle.h"
-
+#include "Player.h"
 #include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
 
-Triangle::Triangle() :
-    BaseEntity{ Type::TRIANGLE, glm::vec3{0.0f}, glm::vec3{0.0005f}, new Shader("./Source/Entities/Triangle/shaders/triangle.vert","./Source/Entities/Triangle/shaders/triangle.frag") }
+Player::Player() :
+    BaseEntity(PADDLE, glm::vec3{-1.5f, 0.0f, 0.0f}, glm::vec3{ 0.0005f },
+        new Shader{"./Source/Entities/Player/shaders/player.vert", "./Source/Entities/Player/shaders/player.frag"} )
 {
 }
 
-void Triangle::Update()
+void Player::Update()
 {
 }
 
-void Triangle::Draw()
+void Player::Draw()
 {
 	mShader->Use();
 
@@ -27,14 +25,15 @@ void Triangle::Draw()
     mShader->SetMat4("view", view);
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, BaseEntity::GetPosition());
+    model = glm::scale(model, glm::vec3(-0.08f, 0.5f, 0.0f));
     mShader->SetMat4("model", model);
 
-	mShader->SetVec3("color", glm::vec3(sin(-glfwGetTime()), sin(glfwGetTime()), cos(glfwGetTime())));
+    mShader->SetVec3("color", glm::vec3(sin(-glfwGetTime()), sin(glfwGetTime()), cos(glfwGetTime())));
 
-	BaseEntity::Draw();
+    BaseEntity::Draw();
 }
 
-void Triangle::Move(Direction direction)
+void Player::Move(Direction direction)
 {
     BaseEntity::Move(direction);
 }

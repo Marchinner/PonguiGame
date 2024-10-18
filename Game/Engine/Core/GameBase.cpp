@@ -38,7 +38,7 @@ bool GameBase::Initialize()
 		return false;
 	}
 
-	Input::SetWindow(mWindow->GetWindow());
+	Input::Initialize(mWindow->GetWindow());
 	mRenderer = new Renderer();
 
 	mRunning = true;
@@ -68,10 +68,14 @@ void GameBase::Run()
 
 void GameBase::Update()
 {
+	Input::Update();
+
 
 }
 
 void GameBase::Render()
 {
 	mRenderer->Render();
+
+
 }

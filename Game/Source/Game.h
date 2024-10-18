@@ -2,6 +2,14 @@
 
 #include "../Engine/Core/GameBase.h"
 #include "Entities/Triangle/Triangle.h"
+#include "Entities/Player/Player.h"
+#include "Entities/Opponent/Opponent.h"
+
+enum GameState
+{
+	PAUSED,
+	RUNNING
+};
 
 class Game : public GameBase
 {
@@ -19,5 +27,8 @@ private:
 
 private:
 	Triangle* mTriangle;
+	Player* mPlayer;
+	Opponent* mOpponent;
+	GameState mGameState;
 };
 

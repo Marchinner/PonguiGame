@@ -1,11 +1,9 @@
 #pragma once
-
 #include "../BaseEntity.h"
-
-class Triangle : public BaseEntity
+class Opponent : public BaseEntity
 {
 public:
-	Triangle();
+	Opponent();
 
 	virtual void Update();
 	virtual void Draw();
