@@ -32,11 +32,15 @@ BaseEntity::BaseEntity(Type type, glm::vec3 position, float velocity, Shader* sh
 	};
 
 	constexpr float ballVertices[]{
-		0.0f
+		 0.5f,  0.5f, 0.0f,  // top right
+		 0.5f, -0.5f, 0.0f,  // bottom right
+		-0.5f, -0.5f, 0.0f,  // bottom left
+		-0.5f,  0.5f, 0.0f   // top left 
 	};
 
 	constexpr unsigned int ballIndices[]{
-		0
+		0, 1, 3,   // first triangle
+		1, 2, 3    // second triangle
 	};
 
 	glGenVertexArrays(1, &mVAO);

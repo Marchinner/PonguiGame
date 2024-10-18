@@ -4,6 +4,7 @@
 #include "Entities/Triangle/Triangle.h"
 #include "Entities/Player/Player.h"
 #include "Entities/Opponent/Opponent.h"
+#include "Entities/Ball/Ball.h"
 
 enum GameState
 {
@@ -29,6 +30,7 @@ private:
 	Triangle* mTriangle;
 	Player* mPlayer;
 	Opponent* mOpponent;
+	Ball* mBall;
 	GameState mGameState;
 };
 

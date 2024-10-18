@@ -130,6 +130,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Entities\Ball\Ball.h" />
     <ClInclude Include="Engine\Renderer\Shader.h" />
     <ClInclude Include="Source\Entities\Opponent\Opponent.h" />
     <ClInclude Include="Source\Entities\Player\Player.h" />
@@ -142,6 +143,7 @@
     <ClInclude Include="Source\Entities\Triangle\Triangle.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Entities\Ball\Ball.cpp" />
     <ClCompile Include="Engine\Renderer\Shader.cpp" />
     <ClCompile Include="Source\Entities\Opponent\Opponent.cpp" />
     <ClCompile Include="Source\Entities\Player\Player.cpp" />
@@ -156,6 +158,8 @@
     <ClCompile Include="Source\Entities\Triangle\Triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Source\Entities\Ball\shaders\ball.frag" />
+    <None Include="Source\Entities\Ball\shaders\ball.vert" />
     <None Include="Source\Entities\Opponent\shaders\opponent.frag" />
     <None Include="Source\Entities\Opponent\shaders\opponent.vert" />
     <None Include="Source\Entities\Player\shaders\player.frag" />

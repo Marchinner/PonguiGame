@@ -7,6 +7,7 @@ Game::Game() :
 	mTriangle{ nullptr },
 	mPlayer{ nullptr },
 	mOpponent{ nullptr },
+	mBall{ nullptr },
 	mGameState{ RUNNING }
 {
 }
@@ -30,6 +31,12 @@ Game::~Game()
 		delete mOpponent;
 		mOpponent = nullptr;
 	}
+
+	if (mBall)
+	{
+		delete mBall;
+		mBall = nullptr;
+	}
 }
 
 void Game::Start()
@@ -41,6 +48,7 @@ void Game::Start()
 	mTriangle = new Triangle();
 	mPlayer = new Player();
 	mOpponent = new Opponent();
+	mBall = new Ball();
 
 	std::cout << "Pongui started!" << std::endl;
 
@@ -68,6 +76,8 @@ void Game::Render()
 		mPlayer->Draw();
 
 		mOpponent->Draw();
+
+		mBall->Draw();
 	}
 }
 
