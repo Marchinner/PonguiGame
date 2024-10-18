@@ -78,7 +78,7 @@ void GameBase::Update()
 
 void GameBase::Render()
 {
-	float currentFrame = glfwGetTime();
+	float currentFrame = (float)glfwGetTime();
 	deltaTime = currentFrame - lastFrame;
 	lastFrame = currentFrame;
 
