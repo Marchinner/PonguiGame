@@ -2,7 +2,7 @@
 #include <GLFW/glfw3.h>
 
 Player::Player() :
-    BaseEntity(PADDLE, glm::vec3{-1.5f, 0.0f, 0.0f}, glm::vec3{ 0.0005f },
+    BaseEntity(PADDLE, glm::vec3{-1.5f, 0.0f, 0.0f}, 2.0f,
         new Shader{"./Source/Entities/Player/shaders/player.vert", "./Source/Entities/Player/shaders/player.frag"} )
 {
 }
@@ -33,7 +33,7 @@ void Player::Draw()
     BaseEntity::Draw();
 }
 
-void Player::Move(Direction direction)
+void Player::Move(Direction direction, float deltaTime)
 {
-    BaseEntity::Move(direction);
+    BaseEntity::Move(direction, deltaTime);
 }

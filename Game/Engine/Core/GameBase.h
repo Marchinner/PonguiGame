@@ -18,9 +18,13 @@ protected:
 	virtual void Update();
 	virtual void Render();
 
+protected:
+	static float deltaTime;
+
 private:
 	bool mRunning;
 	Window* mWindow;
 	Renderer* mRenderer;
+	static float lastFrame;
 };
 

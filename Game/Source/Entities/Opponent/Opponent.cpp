@@ -2,7 +2,7 @@
 #include <GLFW/glfw3.h>
 
 Opponent::Opponent() :
-    BaseEntity(PADDLE, glm::vec3{ 1.5f, 0.0f, 0.0f }, glm::vec3{ 0.0005f },
+    BaseEntity(PADDLE, glm::vec3{ 1.5f, 0.0f, 0.0f }, 2.0f,
         new Shader{ "./Source/Entities/Opponent/shaders/opponent.vert", "./Source/Entities/Opponent/shaders/opponent.frag" })
 {
 }
@@ -33,7 +33,7 @@ void Opponent::Draw()
     BaseEntity::Draw();
 }
 
-void Opponent::Move(Direction direction)
+void Opponent::Move(Direction direction, float deltaTime)
 {
-    BaseEntity::Move(direction);
+    BaseEntity::Move(direction, deltaTime);
 }

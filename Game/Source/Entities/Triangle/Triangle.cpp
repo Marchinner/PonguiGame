@@ -5,7 +5,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 Triangle::Triangle() :
-    BaseEntity{ Type::TRIANGLE, glm::vec3{0.0f}, glm::vec3{0.0005f}, new Shader("./Source/Entities/Triangle/shaders/triangle.vert","./Source/Entities/Triangle/shaders/triangle.frag") }
+    BaseEntity{ Type::TRIANGLE, glm::vec3{0.0f}, 2.0f, new Shader("./Source/Entities/Triangle/shaders/triangle.vert","./Source/Entities/Triangle/shaders/triangle.frag") }
 {
 }
 
@@ -34,7 +34,7 @@ void Triangle::Draw()
 	BaseEntity::Draw();
 }
 
-void Triangle::Move(Direction direction)
+void Triangle::Move(Direction direction, float deltaTime)
 {
-    BaseEntity::Move(direction);
+    BaseEntity::Move(direction, deltaTime);
 }

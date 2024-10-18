@@ -7,6 +7,6 @@ public:
 
 	virtual void Update();
 	virtual void Draw();
-	virtual void Move(Direction direction);
+	virtual void Move(Direction direction, float deltaTime);
 };
 

@@ -2,7 +2,7 @@
 
 #include <glad/glad.h>
 
-BaseEntity::BaseEntity(Type type, glm::vec3 position, glm::vec3 velocity, Shader* shader) :
+BaseEntity::BaseEntity(Type type, glm::vec3 position, float velocity, Shader* shader) :
 	mType{ type },
 	mPosition{ position },
 	mVelocity{ velocity },
@@ -87,22 +87,23 @@ void BaseEntity::Draw()
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void BaseEntity::Move(Direction direction)
+void BaseEntity::Move(Direction direction, float deltaTime)
 {
+	float velocity = mVelocity * deltaTime;
 	glm::vec3 moveVector;
 	switch (direction)
 	{
 	case UP:
-		moveVector = glm::vec3(0.0f, 0.1f, 0.0f);
+		moveVector = glm::vec3(0.0f, velocity, 0.0f);
 		break;
 	case LEFT:
-		moveVector = glm::vec3(-0.1f, 0.0f, 0.0f);
+		moveVector = glm::vec3(-velocity, 0.0f, 0.0f);
 		break;
 	case DOWN:
-		moveVector = glm::vec3(0.0f, -0.1f, 0.0f);
+		moveVector = glm::vec3(0.0f, -velocity, 0.0f);
 		break;
 	case RIGHT:
-		moveVector = glm::vec3(0.1f, 0.0f, 0.0f);
+		moveVector = glm::vec3(velocity, 0.0f, 0.0f);
 		break;
 	default:
 		moveVector = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -120,7 +121,7 @@ glm::vec3 BaseEntity::GetPosition() const
 	return mPosition;
 }
 
-glm::vec3 BaseEntity::GetVelocity() const
+float BaseEntity::GetVelocity() const
 {
 	return mVelocity;
 }

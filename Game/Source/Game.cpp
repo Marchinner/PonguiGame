@@ -86,8 +86,8 @@ void Game::processPlayerInputs()
 			mGameState = GameState::RUNNING;
 
 	if (Input::IsKeyPressed(GLFW_KEY_UP) || Input::IsKeyHeld(GLFW_KEY_UP))
-		mPlayer->Move(Direction::UP);
+		mPlayer->Move(Direction::UP, deltaTime);
 
 	if (Input::IsKeyPressed(GLFW_KEY_DOWN) || Input::IsKeyHeld(GLFW_KEY_DOWN))
-		mPlayer->Move(Direction::DOWN);
+		mPlayer->Move(Direction::DOWN, deltaTime);
 }

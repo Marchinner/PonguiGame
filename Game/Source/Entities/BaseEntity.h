@@ -22,22 +22,22 @@ enum Direction
 class BaseEntity
 {
 protected:
-	BaseEntity(Type type, glm::vec3 position, glm::vec3 velocity, Shader* shader);
+	BaseEntity(Type type, glm::vec3 position, float velocity, Shader* shader);
 	~BaseEntity() = default;
 
 	virtual void Update();
 	virtual void Draw();
-	virtual void Move(Direction direction);
+	virtual void Move(Direction direction, float deltaTime);
 
 	glm::vec3 GetPosition() const;
-	glm::vec3 GetVelocity() const;
+	float GetVelocity() const;
 protected:
 	Shader* mShader;
 
 private:
 	Type mType;
 	glm::vec3 mPosition;
-	glm::vec3 mVelocity;
+	float mVelocity;
 	unsigned int mVAO;
 	unsigned int mVBO;
 	unsigned int mEBO;

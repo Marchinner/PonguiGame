@@ -2,6 +2,9 @@
 #include <iostream>
 #include "../Input/Input.h"
 
+float GameBase::deltaTime = 0.0f;
+float GameBase::lastFrame = 0.0f;
+
 GameBase::GameBase(int windowWidth, int windowHeight, const std::string& windowTitle) :
 	mRunning{ false },
 	mWindow{ new Window(windowWidth, windowHeight, windowTitle) },
@@ -75,7 +78,9 @@ void GameBase::Update()
 
 void GameBase::Render()
 {
+	float currentFrame = glfwGetTime();
+	deltaTime = currentFrame - lastFrame;
+	lastFrame = currentFrame;
+
 	mRenderer->Render();
-
-
 }
