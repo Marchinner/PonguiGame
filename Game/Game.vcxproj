@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Felipe Freitas\source\repos\PonguiGame\Game\ThirdParty\Includes;C:\Users\felip\source\repos\Marchinner\PonguiGame\Game\ThirdParty\Includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Felipe Freitas\source\repos\PonguiGame\Game\ThirdParty\Includes;C:\Users\felip\source\repos\Marchinner\PonguiGame\Game\ThirdParty\Includes;C:\Users\Felipe Freitas\source\repos\Marchinner\PonguiGame\Game\Vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
     </ClCompile>
     <Link>
@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Renderer\ImGuiRenderer.h" />
     <ClInclude Include="Source\Entities\Ball\Ball.h" />
     <ClInclude Include="Engine\Renderer\Shader.h" />
     <ClInclude Include="Source\Entities\Opponent\Opponent.h" />
@@ -142,8 +143,19 @@
     <ClInclude Include="Engine\Input\Input.h" />
     <ClInclude Include="Source\Game.h" />
     <ClInclude Include="Source\Entities\Triangle\Triangle.h" />
+    <ClInclude Include="Vendor\imgui\imconfig.h" />
+    <ClInclude Include="Vendor\imgui\imgui.h" />
+    <ClInclude Include="Vendor\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="Vendor\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="Vendor\imgui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="Vendor\imgui\imgui_internal.h" />
+    <ClInclude Include="Vendor\imgui\imgui_stdlib.h" />
+    <ClInclude Include="Vendor\imgui\imstb_rectpack.h" />
+    <ClInclude Include="Vendor\imgui\imstb_textedit.h" />
+    <ClInclude Include="Vendor\imgui\imstb_truetype.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Renderer\ImGuiRenderer.cpp" />
     <ClCompile Include="Source\Entities\Ball\Ball.cpp" />
     <ClCompile Include="Engine\Renderer\Shader.cpp" />
     <ClCompile Include="Source\Entities\Opponent\Opponent.cpp" />
@@ -157,6 +169,14 @@
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="ThirdParty\Sources\glad.c" />
     <ClCompile Include="Source\Entities\Triangle\Triangle.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui_demo.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui_draw.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui_stdlib.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui_tables.cpp" />
+    <ClCompile Include="Vendor\imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Source\Entities\Ball\shaders\ball.frag" />

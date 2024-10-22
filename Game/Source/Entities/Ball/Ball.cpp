@@ -8,7 +8,7 @@ Ball::Ball() :
 {
 }
 
-void Ball::Update()
+void Ball::Update(float screenWidth, float screenHeight)
 {
 }
 

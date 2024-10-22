@@ -7,9 +7,11 @@ class Ball : public BaseEntity
 public:
 	Ball();
 
-	virtual void Update();
+	void Update(float screenWidth, float screenHeight);
 	virtual void Draw();
-	virtual void Move(Direction direction, float deltaTime);
+
+private:
+	void Move(Direction direction, float deltaTime);
 
 private:
 	glm::vec3 mDefaultColor;

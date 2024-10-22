@@ -65,6 +65,8 @@ void Game::Update()
 	GameBase::Update();
 
 	processPlayerInputs();
+
+	mBall->Update(GetGameWindowSize().x, GetGameWindowSize().y);
 }
 
 void Game::Render()

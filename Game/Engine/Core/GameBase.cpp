@@ -1,6 +1,7 @@
 #include "GameBase.h"
 #include <iostream>
 #include "../Input/Input.h"
+#include <glm/glm.hpp>
 
 float GameBase::deltaTime = 0.0f;
 float GameBase::lastFrame = 0.0f;
@@ -42,7 +43,7 @@ bool GameBase::Initialize()
 	}
 
 	Input::Initialize(mWindow->GetWindow());
-	mRenderer = new Renderer();
+	mRenderer = new Renderer(mWindow->GetWindow());
 
 	mRunning = true;
 
@@ -83,4 +84,13 @@ void GameBase::Render()
 	lastFrame = currentFrame;
 
 	mRenderer->Render();
+}
+
+glm::vec2 GameBase::GetGameWindowSize() const
+{
+	int width;
+	int height;
+	glfwGetWindowSize(mWindow->GetWindow(), &width, &height);
+
+	return glm::vec2{width, height};
 }

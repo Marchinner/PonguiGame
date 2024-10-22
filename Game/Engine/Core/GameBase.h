@@ -3,6 +3,7 @@
 
 #include "Window.h"
 #include "../Renderer/Renderer.h"
+#include <glm/fwd.hpp>
 
 struct GLFWwindow;
 
@@ -17,7 +18,7 @@ protected:
 	virtual void Run();
 	virtual void Update();
 	virtual void Render();
-
+	glm::vec2 GetGameWindowSize() const;
 protected:
 	static float deltaTime;
 
