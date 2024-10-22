@@ -1,6 +1,9 @@
 #include "Game.h"
 #include <iostream>
 #include "../Engine/Input/Input.h"
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
 
 Game::Game() :
 	GameBase{ 800, 600, "Pongui" },
@@ -73,6 +76,13 @@ void Game::Render()
 {
 	if (mGameState == RUNNING)
 	{
+		// Start the Dear ImGui frame
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
+
+		ImGui::ShowDemoWindow();
+
 		GameBase::Render();
 
 		mPlayer->Draw();
@@ -80,7 +90,9 @@ void Game::Render()
 		mOpponent->Draw();
 
 		mBall->Draw();
+
 	}
+
 }
 
 void Game::processPlayerInputs()
