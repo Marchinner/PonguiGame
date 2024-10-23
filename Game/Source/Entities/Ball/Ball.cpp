@@ -1,5 +1,4 @@
 #include "Ball.h"
-#include "../../../Engine/Core/Window.h"
 
 Ball::Ball() :
 	BaseEntity(PADDLE, glm::vec3{ 0.0f, 0.0f, 0.0f }, 1.5f,
@@ -8,8 +7,9 @@ Ball::Ball() :
 {
 }
 
-void Ball::Update(Window* gameWindow)
+void Ball::Update(Window* gameWindow, float deltaTime)
 {
+	Move(deltaTime);
 }
 
 void Ball::Draw()
@@ -34,11 +34,22 @@ void Ball::Draw()
 	BaseEntity::Draw();
 }
 
-glm::vec2 Ball::GetPosition() const
+glm::vec3 Ball::GetPosition() const
 {
-	return glm::vec2(BaseEntity::GetPosition());
+	return BaseEntity::GetPosition();
 }
 
-void Ball::Move(Direction direction, float deltaTime)
+void Ball::ResetPosition()
 {
+	SetPosition(glm::vec3(0.0f));
+}
+
+void Ball::Move(float deltaTime)
+{
+	glm::vec3 direction = glm::vec3(-GetVelocity() * deltaTime, 0.0f, 0.0f);
+	glm::mat4 trans = glm::mat4(1.0f);
+	trans = glm::translate(trans, direction);
+	glm::vec4 position = glm::vec4(GetPosition(), 1.0f);
+	position = trans * position;
+	BaseEntity::SetPosition(position);
 }

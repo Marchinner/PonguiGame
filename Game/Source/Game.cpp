@@ -72,7 +72,7 @@ void Game::Update()
 
 	processPlayerInputs();
 
-	mBall->Update(GetGameWindow());
+	mBall->Update(GetGameWindow(), deltaTime);
 }
 
 void Game::Render()
@@ -86,8 +86,19 @@ void Game::Render()
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
+		glm::ivec2 windowSize = glm::ivec2(0);
+		glfwGetFramebufferSize(GetGameWindow()->GetWindow(), &windowSize.x, &windowSize.y);
+
+		float ballx{ mBall->GetPosition().x };
+		float bally{ mBall->GetPosition().y };
+
 		ImGui::Begin("Debug");
-		ImGui::Text("Ball Position: (%.2f, %.2f", mBall->GetPosition());
+		ImGui::Text("Screen Size (%d, %d)", windowSize.x, windowSize.y);
+		ImGui::Text("Ball Position (%f, %f)", ballx, bally);
+		ImGui::SameLine();
+		if (ImGui::Button("Reset"))
+			mBall->ResetPosition();
+
 		ImGui::End();
 
 		ImGui::ShowDemoWindow();

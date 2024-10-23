@@ -30,6 +30,7 @@ protected:
 	virtual void Move(Direction direction, float deltaTime);
 
 	glm::vec3 GetPosition() const;
+	void SetPosition(glm::vec3 position);
 	float GetVelocity() const;
 protected:
 	Shader* mShader;

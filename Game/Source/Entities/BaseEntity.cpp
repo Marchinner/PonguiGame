@@ -125,6 +125,11 @@ glm::vec3 BaseEntity::GetPosition() const
 	return mPosition;
 }
 
+void BaseEntity::SetPosition(glm::vec3 position)
+{
+	mPosition = position;
+}
+
 float BaseEntity::GetVelocity() const
 {
 	return mVelocity;

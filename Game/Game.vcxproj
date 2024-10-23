@@ -104,8 +104,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Felipe Freitas\source\repos\PonguiGame\Game\ThirdParty\Includes;C:\Users\felip\source\repos\Marchinner\PonguiGame\Game\ThirdParty\Includes;C:\Users\Felipe Freitas\source\repos\Marchinner\PonguiGame\Game\Vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <AdditionalIncludeDirectories>C:\Users\Felipe Freitas\source\repos\PonguiGame\Game\ThirdParty\Includes;C:\Users\felip\source\repos\Marchinner\PonguiGame\Game\ThirdParty\Includes;C:\Users\Felipe Freitas\source\repos\Marchinner\PonguiGame\Game\Vendor\imgui;C:\Users\felip\source\repos\Marchinner\PonguiGame\Game\Vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
