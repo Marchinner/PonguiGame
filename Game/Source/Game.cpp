@@ -86,6 +86,10 @@ void Game::Render()
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
+		ImGui::Begin("Debug");
+		ImGui::Text("Ball Position: (%.2f, %.2f", mBall->GetPosition());
+		ImGui::End();
+
 		ImGui::ShowDemoWindow();
 
 		mPlayer->Draw();

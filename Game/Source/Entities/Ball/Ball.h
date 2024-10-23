@@ -11,7 +11,7 @@ public:
 
 	void Update(Window* gameWindow);
 	virtual void Draw();
-
+	glm::vec2 GetPosition() const;
 private:
 	void Move(Direction direction, float deltaTime);
 

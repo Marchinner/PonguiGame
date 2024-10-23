@@ -34,6 +34,11 @@ void Ball::Draw()
 	BaseEntity::Draw();
 }
 
+glm::vec2 Ball::GetPosition() const
+{
+	return glm::vec2(BaseEntity::GetPosition());
+}
+
 void Ball::Move(Direction direction, float deltaTime)
 {
 }
