@@ -27,6 +27,7 @@ private:
 	void processPlayerInputs();
 
 private:
+	ImGuiRenderer* mImGuiRenderer;
 	Triangle* mTriangle;
 	Player* mPlayer;
 	Opponent* mOpponent;

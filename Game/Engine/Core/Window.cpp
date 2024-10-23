@@ -30,7 +30,15 @@ bool Window::Initialize()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
+
+	int monitorCount;
+	GLFWmonitor** monitors = glfwGetMonitors(&monitorCount);
+
+	int secondMonitorXPos;
+	int secondMonitorYPos;
+	int secondMonitorXSize;
+	int secondMonitorYSize;
+	glfwGetMonitorWorkarea(monitors[1], &secondMonitorXPos, &secondMonitorYPos, &secondMonitorXSize, &secondMonitorYSize);
 
 	mWindow = glfwCreateWindow(mWidth, mHeight, mTitle.c_str(), NULL, NULL);
 	if (mWindow == NULL)
@@ -39,7 +47,11 @@ bool Window::Initialize()
 		return false;
 	}
 
+	glfwSetWindowPos(mWindow, secondMonitorXPos + (secondMonitorXSize - mWidth) / 2, secondMonitorYPos + (secondMonitorYSize - mHeight) / 2);
+
+
 	glfwMakeContextCurrent(mWindow);
+
 
 	glfwSetFramebufferSizeCallback(mWindow, framebufferSizeCallback);
 

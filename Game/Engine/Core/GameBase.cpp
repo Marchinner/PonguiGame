@@ -43,6 +43,7 @@ bool GameBase::Initialize()
 	}
 
 	Input::Initialize(mWindow->GetWindow());
+
 	mRenderer = new Renderer(mWindow->GetWindow());
 
 	mRunning = true;
@@ -86,11 +87,7 @@ void GameBase::Render()
 	mRenderer->Render();
 }
 
-glm::vec2 GameBase::GetGameWindowSize() const
+Window* GameBase::GetGameWindow()
 {
-	int width;
-	int height;
-	glfwGetWindowSize(mWindow->GetWindow(), &width, &height);
-
-	return glm::vec2{width, height};
+	return mWindow;
 }

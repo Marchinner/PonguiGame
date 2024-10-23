@@ -1,5 +1,5 @@
 #include "Ball.h"
-#include "../../../ThirdParty/Includes/GLFW/glfw3.h"
+#include "../../../Engine/Core/Window.h"
 
 Ball::Ball() :
 	BaseEntity(PADDLE, glm::vec3{ 0.0f, 0.0f, 0.0f }, 1.5f,
@@ -8,7 +8,7 @@ Ball::Ball() :
 {
 }
 
-void Ball::Update(float screenWidth, float screenHeight)
+void Ball::Update(Window* gameWindow)
 {
 }
 

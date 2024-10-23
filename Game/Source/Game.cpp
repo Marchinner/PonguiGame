@@ -7,6 +7,7 @@
 
 Game::Game() :
 	GameBase{ 800, 600, "Pongui" },
+	mImGuiRenderer{ nullptr },
 	mTriangle{ nullptr },
 	mPlayer{ nullptr },
 	mOpponent{ nullptr },
@@ -48,6 +49,8 @@ void Game::Start()
 
 	GameBase::Initialize();
 
+	mImGuiRenderer = new ImGuiRenderer(GetGameWindow()->GetWindow());
+
 	mTriangle = new Triangle();
 	mPlayer = new Player();
 	mOpponent = new Opponent();
@@ -69,13 +72,15 @@ void Game::Update()
 
 	processPlayerInputs();
 
-	mBall->Update(GetGameWindowSize().x, GetGameWindowSize().y);
+	mBall->Update(GetGameWindow());
 }
 
 void Game::Render()
 {
 	if (mGameState == RUNNING)
 	{
+		GameBase::Render();
+
 		// Start the Dear ImGui frame
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
@@ -83,14 +88,13 @@ void Game::Render()
 
 		ImGui::ShowDemoWindow();
 
-		GameBase::Render();
-
 		mPlayer->Draw();
 
 		mOpponent->Draw();
 
 		mBall->Draw();
 
+		mImGuiRenderer->Render();
 	}
 
 }

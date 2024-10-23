@@ -4,11 +4,8 @@ class Renderer
 {
 public:
 	Renderer(GLFWwindow* window);
-	virtual ~Renderer();
+	~Renderer() = default;
 
 	void Render();
-
-private:
-	ImGuiRenderer* mImGuiRenderer;
 };
 

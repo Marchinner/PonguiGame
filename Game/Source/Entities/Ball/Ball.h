@@ -2,12 +2,14 @@
 
 #include "../BaseEntity.h"
 
+struct Window;
+
 class Ball : public BaseEntity
 {
 public:
 	Ball();
 
-	void Update(float screenWidth, float screenHeight);
+	void Update(Window* gameWindow);
 	virtual void Draw();
 
 private:

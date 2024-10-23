@@ -18,7 +18,7 @@ protected:
 	virtual void Run();
 	virtual void Update();
 	virtual void Render();
-	glm::vec2 GetGameWindowSize() const;
+	Window* GetGameWindow();
 protected:
 	static float deltaTime;
 
