@@ -6,7 +6,7 @@ public:
 	Player();
 
 	virtual void Update();
-	virtual void Draw();
+	virtual void Draw(glm::mat4 projection);
 	virtual void Move(Direction direction, float deltaTime);
 };
 

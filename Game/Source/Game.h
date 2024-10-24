@@ -5,6 +5,7 @@
 #include "Entities/Player/Player.h"
 #include "Entities/Opponent/Opponent.h"
 #include "Entities/Ball/Ball.h"
+#include "glm/fwd.hpp"
 
 enum GameState
 {
@@ -33,5 +34,6 @@ private:
 	Opponent* mOpponent;
 	Ball* mBall;
 	GameState mGameState;
+	glm::mat4 mProjection;
 };
 

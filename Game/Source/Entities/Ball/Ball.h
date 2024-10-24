@@ -9,7 +9,7 @@ public:
 	Ball();
 
 	void Update(Window* gameWindow, float deltaTime);
-	virtual void Draw();
+	virtual void Draw(glm::mat4 projection);
 	glm::vec3 GetPosition() const;
 	void ResetPosition();
 private:

@@ -12,7 +12,8 @@ Game::Game() :
 	mPlayer{ nullptr },
 	mOpponent{ nullptr },
 	mBall{ nullptr },
-	mGameState{ RUNNING }
+	mGameState{ RUNNING },
+	mProjection{ glm::mat4{1.0f} }
 {
 }
 
@@ -77,6 +78,11 @@ void Game::Update()
 
 void Game::Render()
 {
+	glm::ivec2 windowSize = glm::ivec2(0);
+	glfwGetFramebufferSize(GetGameWindow()->GetWindow(), &windowSize.x, &windowSize.y);
+	//mProjection = glm::ortho(0.0f, (float)windowSize.x, 0.0f, (float)windowSize.y, 0.1f, 100.0f);
+	mProjection = glm::perspective(glm::radians(45.0f), (float)windowSize.x / (float)windowSize.y, 0.1f, 100.0f);
+
 	if (mGameState == RUNNING)
 	{
 		GameBase::Render();
@@ -86,8 +92,6 @@ void Game::Render()
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
-		glm::ivec2 windowSize = glm::ivec2(0);
-		glfwGetFramebufferSize(GetGameWindow()->GetWindow(), &windowSize.x, &windowSize.y);
 
 		float ballx{ mBall->GetPosition().x };
 		float bally{ mBall->GetPosition().y };
@@ -103,11 +107,11 @@ void Game::Render()
 
 		ImGui::ShowDemoWindow();
 
-		mPlayer->Draw();
+		mPlayer->Draw(mProjection);
 
-		mOpponent->Draw();
+		mOpponent->Draw(mProjection);
 
-		mBall->Draw();
+		mBall->Draw(mProjection);
 
 		mImGuiRenderer->Render();
 	}
